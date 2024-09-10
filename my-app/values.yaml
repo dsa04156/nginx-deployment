@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: harbor.local:80/my-app/app
+  repository: 58.227.158.54:80/my-app/app
   tag: latest
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
