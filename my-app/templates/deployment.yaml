@@ -4,6 +4,8 @@ metadata:
   name: {{ include "my-app.fullname" . }}
   labels:
     app: {{ include "my-app.name" . }}
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: "58.227.158.54:80/my-app/app"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -19,7 +21,7 @@ spec:
       securityContext: {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: 58.227.158.54:80/my-app/app:latest
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
