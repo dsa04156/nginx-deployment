@@ -2,8 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd-image-updater.argoproj.io/image-list: 58.227.158.54:8001/nginx/app:latest
-    argocd-image-updater.argoproj.io/org_app.update-strategy: latest
+    argocd-image-updater.argoproj.io/image-list: 58.227.158.54:8001/nginx/app:v1.*
+    argocd-image-updater.argoproj.io/org_app.update-strategy: semver
   name: nginx-deployment
   namespace: argocd
 spec:
@@ -21,7 +21,7 @@ spec:
           value: 58.227.158.54:8001/nginx/app
           forceString: true
         - name: image.tag
-          value: 'latest'
+          value: 'v1.0.0'
           forceString: true
   syncPolicy:
     automated: {}
