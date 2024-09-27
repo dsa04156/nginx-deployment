@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: 58.227.158.54:8001/nginx/app:latest
+    argocd-image-updater.argoproj.io/org_app.update-strategy: latest
+  name: nginx-deployment
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/dsa04156/nginx-deployment.git  # 사용자 GitHub 저장소
+    path: nginx  # Helm 차트가 있는 경로
+    targetRevision: master  # 마스터 브랜치 사용
+    helm:
+      parameters:
+        - name: image.name
+          value: 58.227.158.54:8001/nginx/app
+          forceString: true
+        - name: image.tag
+          value: 'latest'
+          forceString: true
+  syncPolicy:
+    automated: {}
+
