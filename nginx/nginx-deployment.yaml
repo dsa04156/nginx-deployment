@@ -21,7 +21,7 @@ spec:
           value: 58.227.158.54:8001/nginx/app
           forceString: true
         - name: image.tag
-          value: 'v1.0.0'
+          value: 'v1.0.2'
           forceString: true
   syncPolicy:
     automated: {}

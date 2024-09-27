@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: 58.227.158.54:8001/nginx/app
-  tag: "latest"
+  tag: "v1.0.0"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
